@@ -29,7 +29,7 @@ SHA1SUMTARXZFILE=$(TARXZFILE).sha1sum.txt
 BLOCKDEVICE=
 
 all:
-	set -e; sudo lb build && ./build_parrotsec_image.sh 2>&1 | tee $(LOGFILE)
+	set -e; sudo lb build && sudo ./build_parrotsec_image.sh 2>&1 | tee $(LOGFILE)
 	if [ -f live-image-armhf.tar.tar.gz ]; then \
 		tar -jcf $(CONFIGFILE) auto/ config/ configure; \
 		sudo mv live-image-armhf.contents $(LISTFILE); \
