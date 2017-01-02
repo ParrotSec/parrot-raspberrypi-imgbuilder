@@ -179,5 +179,6 @@ raspberrypi-kernel-headers
 raspberrypi-sys-mods
 raspi-copies-and-fills
 raspi-gpio
+rpi-update
 rc-gui
 ssh-regen-startup
