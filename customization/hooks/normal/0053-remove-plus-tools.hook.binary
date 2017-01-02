@@ -1,0 +1,6 @@
+#!/bin/sh
+
+cd binary
+
+echo "I: removing metasploit framework and openvas framework"
+apt-get purge metasploit-framework openvas openvas-cli openvas-manager openvas-scanner libopenvas8 -y

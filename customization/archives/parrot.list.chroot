@@ -1,0 +1,3 @@
+## stable repository
+deb http://rwth-aachen-euro.archive.parrotsec.org/parrotsec/ parrot main contrib non-free
+#deb-src http://rwth-aachen-euro.archive.parrotsec.org/parrotsec/ parrot main contrib non-free

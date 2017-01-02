@@ -1,0 +1,29 @@
+#!/bin/sh
+
+mkdir -p uuid
+cd uuid
+
+prefix=
+
+if ls ../binary/casper/initrd.img-* 2>&1 > /dev/null; then
+  prefix=../binary/boot/filesystem.dir/casper/
+else
+  prefix=../binary/boot/filesystem.dir/boot/
+fi
+
+UUID=`uuidgen -r`
+
+for initrd in `ls $prefix/initrd.img-*`; do
+  zcat $initrd | cpio --quiet -id
+  echo $UUID > conf/uuid.conf
+  find . | cpio --quiet --dereference -o -H newc | gzip > $initrd
+  rm -rf *
+done
+
+echo "I: setting rootfs UUID $UUID in initrd... copying to '.disk/casper-uuid'."
+if [ ! -d ../binary/boot/filesystem.dir/.disk ]; then
+    mkdir -p ../binary/boot/filesystem.dir/.disk
+fi
+echo $UUID > ../binary/boot/filesystem.dir/.disk/casper-uuid
+cd ..
+rm -rf uuid

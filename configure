@@ -1,0 +1,53 @@
+#!/bin/sh
+
+# (C) 2012-2015 Fathi Boudra <fathi.boudra@linaro.org>
+# (C) 2015-2016 Francesco Bonanno <mibofra@frozenbox.org> , little modifications for parrot arm rootfs tarballs.
+
+# Create configuration for live-build.
+
+# You need live-build package installed.
+
+set -e
+
+echo "I: create configuration"
+export LB_BOOTSTRAP_INCLUDE="apt-transport-https gnupg"
+lb config \
+ --distribution stable \
+ --architectures armhf \
+ --debian-installer-distribution stable \
+ --archive-areas 'main contrib non-free' \
+ --keyring-packages parrot-archive-keyring \
+ --debootstrap-options --keyring=config/archives/parrot.key.chroot \
+ --updates false \
+ --security false \
+ --backports false \
+ --firmware-binary false \
+ --firmware-chroot false \
+ --compression gzip \
+ --gzip-options '-9 --rsyncable' \
+ --debconf-frontend noninteractive \
+ --binary-filesystem ext4 \
+ --bootstrap-qemu-arch armhf \
+ --bootstrap-qemu-static /usr/bin/qemu-arm-static \
+ --mirror-bootstrap 'http://archive.parrotsec.org/parrot' \
+ --mirror-chroot 'http://archive.parrotsec.org/parrot' \
+ --mirror-debian-installer 'http://archive.parrotsec.org/parrot' \
+ --mirror-binary 'http://archive.parrotsec.org/parrot' \
+ --iso-application 'Parrot Security' \
+ --iso-publisher 'Frozenbox Network; http://www.parrotsec.org/; forum.frozenbox.org' \
+ --iso-volume 'ParrotSec 3.4 armhf' \
+ --linux-flavours none \
+ --linux-packages none \
+ --debian-installer false \
+ --bootappend-live 'username=parrot hostname=parrot-armhf' \
+ --source false \
+ --binary-images tar \
+ --mode debian \
+ --system normal \
+ --build-with-chroot true \
+ --chroot-filesystem none
+
+echo "I: copy customization"
+test -d customization && cp -rf customization/* config/
+
+echo "I: done"

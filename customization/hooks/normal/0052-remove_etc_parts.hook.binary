@@ -1,0 +1,6 @@
+#!/bin/sh
+
+cd binary
+
+echo "I: rm /etc/resolv.conf"
+rm -f ./etc/resolv.conf

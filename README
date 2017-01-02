@@ -1,0 +1,25 @@
+Parrot Security OS Raspberry PI image builder
+
+* To build the image:
+  * install live-build qemu-user-static tar gzip xz gdisk unzip wget kpartx lvm2 dosfstools coreutils
+  * run configure
+  * run make
+
+* Scripts:
+  * configure
+  * Makefile
+  * build_parrotsec_image.sh
+
+* Configuration Layout
+
+`-- ./config
+
+* Customization Layout
+
+`-- ./customization
+
+* To write an image directly to a block device:
+  * run "make BLOCKDEVICE=/dev/BLOCK", where BLOCK is your block device
+    an example: make BLOCKDEVICE=/dev/mmcblk0 or make BLOCKDEVICE=/dev/sdb
+
+All the source code is under GPLv3+ .
