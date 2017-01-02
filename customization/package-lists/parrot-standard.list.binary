@@ -1,5 +1,5 @@
 #standard packages
-! Packages Priority standard
+# ! Packages Priority standard
 
 ##
 #if ARCHITECTURES i386 amd64
