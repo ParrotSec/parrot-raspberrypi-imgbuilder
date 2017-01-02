@@ -119,6 +119,7 @@ echo "dwc_otg.lpm_enable=0 console=ttyAMA0,115200 kgdboc=ttyAMA0,115200 console=
 
 echo "proc            /proc           proc    defaults        0       0
 /dev/mmcblk0p1  /boot           vfat    defaults        0       0
+/dev/mmcblk0p2  /               ext4    errors=remount-ro 0       1
 " > ${rootfs}/etc/fstab
 
 echo "vchiq
