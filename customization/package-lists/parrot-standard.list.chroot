@@ -162,3 +162,23 @@ mate-panel-common
 mate-settings-daemon-common
 mate-terminal-common
 libmarco-private1
+firmware-linux
+firmware-linux-free
+firmware-linux-nonfree
+util-linux
+
+# raspberry-pi packages
+
+libraspberrypi0
+libraspberrypi-bin
+libraspberrypi-dev
+libraspberrypi-doc
+lxkeymap
+raspberrypi-bootloader
+raspberrypi-kernel
+raspberrypi-kernel-headers
+raspberrypi-sys-mods
+raspi-copies-and-fills
+raspi-gpio
+rc-gui
+ssh-regen-startup

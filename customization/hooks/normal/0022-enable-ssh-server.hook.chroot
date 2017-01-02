@@ -1,0 +1,5 @@
+#!/bin/sh
+
+# Enable openssh-server
+
+systemctl enable ssh
