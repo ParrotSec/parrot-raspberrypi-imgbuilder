@@ -7,7 +7,8 @@ firmware-b43legacy-installer
 firmware-b43-installer
 #endif
 #zd1211-firmware
-#firmware-linux
+firmware-linux
+firmware-linux-free
 #firmware-netxen
 #firmware-ralink
 #firmware-realtek
@@ -17,14 +18,14 @@ firmware-b43-installer
 #firmware-atheros
 #firmware-bnx2
 #firmware-libertas
-#bluez-firmware
-#firmware-linux-nonfree
+bluez-firmware
+firmware-linux-nonfree
 
-#firmware-brcm80211
+firmware-brcm80211
 #firmware-amd-graphics
 #firmware-cavium
 #firmware-intel-sound
-#firmware-misc-nonfree
+firmware-misc-nonfree
 #firmware-myricom
 #firmware-qlogic
 #firmware-samsung
@@ -162,9 +163,6 @@ mate-panel-common
 mate-settings-daemon-common
 mate-terminal-common
 libmarco-private1
-firmware-linux
-firmware-linux-free
-firmware-linux-nonfree
 util-linux
 
 # raspberry-pi packages
