@@ -164,6 +164,7 @@ mate-settings-daemon-common
 mate-terminal-common
 libmarco-private1
 util-linux
+mate-applets
 
 # raspberry-pi packages
 
