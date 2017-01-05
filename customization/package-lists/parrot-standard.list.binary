@@ -165,6 +165,9 @@ mate-terminal-common
 libmarco-private1
 util-linux
 mate-applets
+mate-indicator-applet
+mate-dock-applet
+mate-sensors-applet
 
 # raspberry-pi packages
 
