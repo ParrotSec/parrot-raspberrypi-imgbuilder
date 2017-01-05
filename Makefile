@@ -13,6 +13,7 @@ BUILD_NUMBER=1
 BASEIMG=parrotsec-3.4-armhf
 IMAGEPREFIX=$(BASEIMG)-$(BUILD_NUMBER)
 LOGFILE=$(IMAGEPREFIX).build-log.txt
+LOGFILEIMG=$(IMAGEPREFIX).build-log-img.txt
 CONFIGFILE=$(IMAGEPREFIX).config.tar.bz2
 LISTFILE=$(IMAGEPREFIX).contents
 CHROOTFILE=$(IMAGEPREFIX).files
@@ -29,7 +30,7 @@ SHA1SUMTARXZFILE=$(TARXZFILE).sha1sum.txt
 BLOCKDEVICE=
 
 all:
-	set -e; sudo lb build && sudo ./build_parrotsec_image.sh 2>&1 | tee $(LOGFILE)
+	set -e; sudo lb build 2>&1 | tee $(LOGFILE)
 	if [ -f live-image-armhf.tar.tar.gz ]; then \
 		tar -jcf $(CONFIGFILE) auto/ config/ configure; \
 		sudo mv live-image-armhf.contents $(LISTFILE); \
@@ -38,6 +39,7 @@ all:
 		sudo mv live-image-armhf.tar.tar.gz $(TARGZFILE); \
 		md5sum $(LOGFILE) $(CONFIGFILE) $(LISTFILE) $(CHROOTFILE) $(PKGSFILE) $(TARGZFILE) > $(MD5SUMSFILE); \
 		sha1sum $(LOGFILE) $(CONFIGFILE) $(LISTFILE) $(CHROOTFILE) $(PKGSFILE) $(TARGZFILE) > $(SHA1SUMSFILE); \
+		set -e; sudo ./build_parrotsec_image.sh 2>&1 | tee $(LOGFILEIMG); \
 	fi
 
 	if [ -f parrotsec-rpi/parrot-armhf-image.img ]; then \
@@ -45,8 +47,8 @@ all:
 		sudo mv parrotsec-rpi/parrot-armhf-image.img.md5sum.txt $(MD5SUMIMG); \
 		sudo mv parrotsec-rpi/parrot-armhf-image.img.sha1sum.txt $(SHA1SUMIMG); \
 		sleep 1; \
-		tar cfJ $(TARXZFILE) $(IMAGENAME) $(MD5SUMIMG) $(SHA1SUMIMG); \
-		sudo rm -rf $(IMAGENAME) $(MD5SUMIMG) $(SHA1SUMIMG); \
+		tar cfJ $(TARXZFILE) $(IMAGENAME) $(MD5SUMIMG) $(SHA1SUMIMG) $(LOGFILEIMG); \
+		sudo rm -rf $(IMAGENAME) $(MD5SUMIMG) $(SHA1SUMIMG) $(LOGFILEIMG); \
 		md5sum $(TARXZFILE) > $(MD5SUMTARXZFILE); \
 		sha1sum $(TARXZFILE) > $(SHA1SUMTARXZFILE); \
 	fi
@@ -69,7 +71,6 @@ clean:
 	rm -rf .build
 
 	if [ -d parrotsec-rpi ]; then \
-		rm -f $(LOGFILE); \
 		-sudo umount -l parrotsec-rpi/*; true; \
 		sudo dmsetup remove_all; \
 		sudo rm -rf parrotsec-rpi; \
@@ -78,7 +79,6 @@ clean:
 
 	if [ -f $(IMAGENAME) ]; then \
 		rm -f $(IMAGENAME)*; \
-		rm -f $(LOGFILE); \
 		-sudo umount -l parrotsec-rpi/*; true; \
 		sudo dmsetup remove_all; \
 		sudo rm -rf parrotsec-rpi rpi-firmware; \
