@@ -69,19 +69,19 @@ clean:
 	rm -rf .build
 
 	if [ -d parrotsec-rpi ]; then \
-		rm -f $(LOGFILE)
-		-sudo umount -l parrotsec-rpi/*; true
-		sudo dmsetup remove_all
-		sudo rm -rf parrotsec-rpi
-		-sudo rm -rf rpi-firmware; true
+		rm -f $(LOGFILE); \
+		-sudo umount -l parrotsec-rpi/*; true; \
+		sudo dmsetup remove_all; \
+		sudo rm -rf parrotsec-rpi; \
+		-sudo rm -rf rpi-firmware; true; \
 	fi
 
 	if [ -f $(IMAGENAME) ]; then \
-		rm -f $(IMAGENAME)*
-		rm -f $(LOGFILE)
-		-sudo umount -l parrotsec-rpi/*; true
-		sudo dmsetup remove_all
-		sudo rm -rf parrotsec-rpi rpi-firmware
+		rm -f $(IMAGENAME)*; \
+		rm -f $(LOGFILE); \
+		-sudo umount -l parrotsec-rpi/*; true; \
+		sudo dmsetup remove_all; \
+		sudo rm -rf parrotsec-rpi rpi-firmware; \
 	fi
 
 write-image:
