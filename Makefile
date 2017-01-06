@@ -47,7 +47,7 @@ all:
 		sudo mv parrotsec-rpi/parrot-armhf-image.img.md5sum.txt $(MD5SUMIMG); \
 		sudo mv parrotsec-rpi/parrot-armhf-image.img.sha1sum.txt $(SHA1SUMIMG); \
 		sleep 1; \
-		tar cfJ $(TARXZFILE) $(IMAGENAME) $(MD5SUMIMG) $(SHA1SUMIMG) $(LOGFILEIMG); \
+		XZ_OPT=-9 tar cfJ $(TARXZFILE) $(IMAGENAME) $(MD5SUMIMG) $(SHA1SUMIMG) $(LOGFILEIMG); \
 		sudo rm -rf $(IMAGENAME) $(MD5SUMIMG) $(SHA1SUMIMG) $(LOGFILEIMG); \
 		md5sum $(TARXZFILE) > $(MD5SUMTARXZFILE); \
 		sha1sum $(TARXZFILE) > $(SHA1SUMTARXZFILE); \
