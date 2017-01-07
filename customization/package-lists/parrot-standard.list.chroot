@@ -169,6 +169,8 @@ mate-indicator-applet
 mate-dock-applet
 mate-sensors-applet
 mate-power-manager
+eom
+mate-desktop
 
 # raspberry-pi packages
 
