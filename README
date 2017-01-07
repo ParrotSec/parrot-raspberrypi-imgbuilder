@@ -9,6 +9,7 @@ Parrot Security OS Raspberry PI image builder
   * configure
   * Makefile
   * build_parrotsec_image.sh
+  * image-writer-resizer.sh
 
 * Configuration Layout
 
@@ -18,8 +19,13 @@ Parrot Security OS Raspberry PI image builder
 
 `-- ./customization
 
-* To write an image directly to a block device:
-  * run "make BLOCKDEVICE=/dev/BLOCK", where BLOCK is your block device
+* To write an image directly to a block device (as root):
+    run "make BLOCKDEVICE=/dev/BLOCK", where BLOCK is your block device
     an example: make BLOCKDEVICE=/dev/mmcblk0 or make BLOCKDEVICE=/dev/sdb
+
+* To write and autoresize the rootfs partition to the maximum space available
+  use instead image-writer-resizer.sh (as root): "./image-writer-resizer.sh /dev/DEVICE"
+  where DEVICE is your block device. This script use ddrescue, so install it before
+  using the script.
 
 All the source code is under GPLv3+ .

@@ -86,3 +86,6 @@ clean:
 
 write-image:
 	sudo ./build_parrotsec_image.sh $(BLOCKDEVICE)
+
+write-and-resize:
+        sudo ./image-writer-resizer.sh $(BLOCKDEVICE)
