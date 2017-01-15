@@ -7,8 +7,7 @@ firmware-b43legacy-installer
 firmware-b43-installer
 #endif
 #zd1211-firmware
-firmware-linux
-firmware-linux-free
+#firmware-linux
 #firmware-netxen
 #firmware-ralink
 #firmware-realtek
@@ -18,14 +17,14 @@ firmware-linux-free
 #firmware-atheros
 #firmware-bnx2
 #firmware-libertas
-bluez-firmware
-firmware-linux-nonfree
+#bluez-firmware
+#firmware-linux-nonfree
 
-firmware-brcm80211
+#firmware-brcm80211
 #firmware-amd-graphics
 #firmware-cavium
 #firmware-intel-sound
-firmware-misc-nonfree
+#firmware-misc-nonfree
 #firmware-myricom
 #firmware-qlogic
 #firmware-samsung
@@ -99,22 +98,6 @@ resolvconf
 dnsmasq
 zile
 mg
-xorg
-live-boot
-live-boot-initramfs-tools
-libbind9-140
-libdns162
-libisccfg140
-mate-core
-mate-desktop-environment-core
-network-manager-gnome
-network-manager
-libfile-fcntllock-perl
-gtkd
-libpython-stdlib
-libpython2.7-stdlib
-tor
-xserver-xorg
 
 #filesystem support
 jfsutils
@@ -129,48 +112,6 @@ reiser4progs
 reiserfsprogs
 xfsprogs
 xfsdump
-
-marco
-mate-control-center
-mate-panel
-mate-settings-daemon
-mate-terminal
-abiword
-bluetooth
-blueman
-dconf-editor
-desktop-base
-gdebi
-geany
-gpa
-hexchat
-xul-ext-noscript
-lightdm-parrot
-parrot-welcome
-synaptic
-xboard
-polyglot
-crafty
-dvd+rw-tools
-udftools
-geany
-marco
-mate-panel
-mate-settings-daemon
-geany-common
-marco-common
-mate-panel-common
-mate-settings-daemon-common
-mate-terminal-common
-libmarco-private1
-util-linux
-mate-applets
-mate-indicator-applet
-mate-dock-applet
-mate-sensors-applet
-mate-power-manager
-eom
-mate-desktop
 
 # raspberry-pi packages
 
@@ -188,3 +129,4 @@ raspi-gpio
 rpi-update
 rc-gui
 ssh-regen-startup
+
