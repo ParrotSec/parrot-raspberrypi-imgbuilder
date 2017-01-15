@@ -54,14 +54,9 @@ ddrescue -D --force parrotsec-*-armhf-*.img ${device}
 partprobe ${device}
 
 fdisk ${device} << EOF
-d
-2
-n
-p
-2
+resizepart 2
 
-
-w
+quit
 EOF
 
 e2fsck -fy ${devicep2}

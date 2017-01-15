@@ -15,6 +15,15 @@ if ! [ -b ${device} ]; then
   exit 1
 fi
 
+mkfs-btrfs=`command -v mkfs.btrfs`
+
+if [ "${mkfs-btrfs}" == "" ]; then
+  echo "You must install btrfs-tools first."
+  exit 1
+else
+  echo "Good! mkfs.btrfs is installed under ${mkfs-btrfs}"
+fi
+
 bootsize="64M"
 
 relative_path=`dirname $0`
