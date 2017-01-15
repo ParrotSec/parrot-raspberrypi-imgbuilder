@@ -33,8 +33,8 @@ lb config \
  --mirror-chroot 'http://archive.parrotsec.org/parrot' \
  --mirror-debian-installer 'http://archive.parrotsec.org/parrot' \
  --mirror-binary 'http://archive.parrotsec.org/parrot' \
- --iso-application 'Parrot Security' \
- --iso-publisher 'Frozenbox Network; http://www.parrotsec.org/; forum.frozenbox.org' \
+ --iso-application 'Parrot' \
+ --iso-publisher 'Parrot Project' \
  --iso-volume 'ParrotSec 3.4 armhf' \
  --linux-flavours none \
  --linux-packages none \
