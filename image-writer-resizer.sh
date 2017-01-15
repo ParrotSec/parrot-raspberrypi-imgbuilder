@@ -18,6 +18,15 @@ else
   echo "Good! ddrescue is installed under ${ddrescue}"
 fi
 
+parted=`command -v parted`
+
+if [ "${parted}" == "" ]; then
+  echo "You must install parted first."
+  exit 1
+else
+  echo "Good! parted is installed under ${parted}"
+fi
+
 if [ -f *.img  ]; then
   echo "Image found"
 else
@@ -53,7 +62,7 @@ ddrescue -D --force parrotsec-*-armhf-*.img ${device}
 
 partprobe ${device}
 
-fdisk ${device} << EOF
+parted ${device} << EOF
 resizepart 2
 
 quit
