@@ -84,12 +84,12 @@ fi
 sleep 1
 
 mkfs.vfat ${bootp}
-mkfs.ext4 ${rootp}
+mkfs.btrfs ${rootp}
 
 mkdir -p ${rootfs}
 mkdir -p ${bootfs}
 
-mount ${rootp} ${rootfs}
+mount -o compress=zlib,ssd ${rootp} ${rootfs}
 
 echo "Unpacking rootfs tarball"
 
@@ -115,11 +115,11 @@ sleep 1
 
 echo "Copied firmware to boot partition"
 
-echo "dwc_otg.lpm_enable=0 console=ttyAMA0,115200 kgdboc=ttyAMA0,115200 console=tty1 root=/dev/mmcblk0p2 rootfstype=ext4 elevator=deadline fsck.repair=yes rootwait quiet" > ${bootfs}/cmdline.txt
+echo "dwc_otg.lpm_enable=0 console=ttyAMA0,115200 kgdboc=ttyAMA0,115200 console=tty1 root=/dev/mmcblk0p2 rootfstype=btrfs elevator=deadline fsck.repair=yes rootwait quiet" > ${bootfs}/cmdline.txt
 
 echo "proc            /proc           proc    defaults        0       0
 /dev/mmcblk0p1  /boot           vfat    defaults        0       0
-/dev/mmcblk0p2  /               ext4    errors=remount-ro 0       1
+/dev/mmcblk0p2  /               btrfs    errors=remount-ro,noatime,nodiratime,compress=lzo,ssd 0       1
 " > ${rootfs}/etc/fstab
 
 echo "vchiq
