@@ -26,7 +26,7 @@ lb config \
  --compression gzip \
  --gzip-options '-9 --rsyncable' \
  --debconf-frontend noninteractive \
- --binary-filesystem ext4 \
+ --binary-filesystem xfs \
  --bootstrap-qemu-arch armhf \
  --bootstrap-qemu-static /usr/bin/qemu-arm-static \
  --mirror-bootstrap 'http://archive.parrotsec.org/parrot' \
@@ -35,7 +35,7 @@ lb config \
  --mirror-binary 'http://archive.parrotsec.org/parrot' \
  --iso-application 'Parrot' \
  --iso-publisher 'Parrot Project' \
- --iso-volume 'ParrotSec 3.4 armhf' \
+ --iso-volume 'ParrotSec 3.5 armhf' \
  --linux-flavours none \
  --linux-packages none \
  --debian-installer false \

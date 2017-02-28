@@ -10,7 +10,7 @@
 # You need live-build package installed and superuser privileges.
 
 BUILD_NUMBER=1
-BASEIMG=parrotsec-3.4-armhf
+BASEIMG=parrotsec-3.5-armhf-rpi
 IMAGEPREFIX=$(BASEIMG)-$(BUILD_NUMBER)
 LOGFILE=$(IMAGEPREFIX).build-log.txt
 LOGFILEIMG=$(IMAGEPREFIX).build-log-img.txt
@@ -88,4 +88,4 @@ write-image:
 	sudo ./build_parrotsec_image.sh $(BLOCKDEVICE)
 
 write-and-resize:
-        sudo ./image-writer-resizer.sh $(BLOCKDEVICE)
+	sudo ./image-writer-resizer.sh $(BLOCKDEVICE)

@@ -15,13 +15,13 @@ if ! [ -b ${device} ]; then
   exit 1
 fi
 
-mkfs-btrfs=`command -v mkfs.btrfs`
+mkfs-xfs=`command -v mkfs.xfs`
 
-if [ "${mkfs-btrfs}" == "" ]; then
-  echo "You must install btrfs-tools first."
+if [ "${mkfs-xfs}" == "" ]; then
+  echo "You must install xfsprogs first."
   exit 1
 else
-  echo "Good! mkfs.btrfs is installed under ${mkfs-btrfs}"
+  echo "Good! mkfs.xfs is installed under ${mkfs-xfs}"
 fi
 
 bootsize="64M"
@@ -93,7 +93,7 @@ fi
 sleep 1
 
 mkfs.vfat ${bootp}
-mkfs.btrfs ${rootp}
+mkfs.xfs ${rootp}
 
 mkdir -p ${rootfs}
 mkdir -p ${bootfs}
@@ -126,11 +126,11 @@ sleep 1
 
 echo "Copied firmware to boot partition"
 
-echo "dwc_otg.lpm_enable=0 console=ttyAMA0,115200 kgdboc=ttyAMA0,115200 console=tty1 root=/dev/mmcblk0p2 rootfstype=btrfs elevator=deadline fsck.repair=yes rootwait quiet" > ${bootfs}/cmdline.txt
+echo "dwc_otg.lpm_enable=0 console=ttyAMA0,115200 kgdboc=ttyAMA0,115200 console=tty1 root=/dev/mmcblk0p2 rootfstype=xfs elevator=deadline fsck.repair=yes rootwait quiet" > ${bootfs}/cmdline.txt
 
 echo "proc            /proc           proc    defaults        0       0
 /dev/mmcblk0p1  /boot           vfat    defaults        0       0
-/dev/mmcblk0p2  /               btrfs    errors=remount-ro,noatime,nodiratime,compress=lzo,ssd 0       1
+/dev/mmcblk0p2  /               xfs     defaults,rw,wsync,errors=remount-ro 0       1
 " > ${rootfs}/etc/fstab
 
 echo "vchiq
