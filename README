@@ -1,7 +1,7 @@
 Parrot Security OS Raspberry PI image builder
 
 * To build the image:
-  * install live-build qemu-user-static tar gzip xz gdisk unzip wget kpartx lvm2 dosfstools coreutils parted xfstools
+  * install live-build qemu-user-static tar gzip xz-utils gdisk unzip wget kpartx lvm2 dosfstools coreutils parted xfsprogs
   * run configure
   * run make
 
