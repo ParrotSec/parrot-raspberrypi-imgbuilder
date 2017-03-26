@@ -10,7 +10,7 @@
 # You need live-build package installed and superuser privileges.
 
 BUILD_NUMBER=1
-BASEIMG=parrotsec-3.5-armhf-rpi
+BASEIMG=parrotsec-standard-3.5-armhf-rpi
 IMAGEPREFIX=$(BASEIMG)-$(BUILD_NUMBER)
 LOGFILE=$(IMAGEPREFIX).build-log.txt
 LOGFILEIMG=$(IMAGEPREFIX).build-log-img.txt
@@ -71,15 +71,15 @@ clean:
 	rm -rf .build
 
 	if [ -d parrotsec-rpi ]; then \
-		-sudo umount -l parrotsec-rpi/*; true; \
+		sudo umount -l parrotsec-rpi/*; true; \
 		sudo dmsetup remove_all; \
 		sudo rm -rf parrotsec-rpi; \
-		-sudo rm -rf rpi-firmware; true; \
+		sudo rm -rf rpi-firmware; true; \
 	fi
 
 	if [ -f $(IMAGENAME) ]; then \
 		rm -f $(IMAGENAME)*; \
-		-sudo umount -l parrotsec-rpi/*; true; \
+		sudo umount -l parrotsec-rpi/*; true; \
 		sudo dmsetup remove_all; \
 		sudo rm -rf parrotsec-rpi rpi-firmware; \
 	fi
