@@ -10,14 +10,13 @@
 set -e
 
 echo "I: create configuration"
-export LB_BOOTSTRAP_INCLUDE="apt-transport-https gnupg"
-lb config \
- --distribution stable \
+export LB_BOOTSTRAP_INCLUDE="apt-transport-https gnupg2"
+lb config noauto \
+ --distribution parrot \
  --architectures armhf \
- --debian-installer-distribution stable \
- --archive-areas 'main contrib non-free' \
+ --archive-areas 'main' \
  --keyring-packages parrot-archive-keyring \
- --debootstrap-options --keyring=config/archives/parrot.key.chroot \
+ --debootstrap-options '--keyring=config/archives/parrot.key.chroot' \
  --updates false \
  --security false \
  --backports false \
@@ -26,12 +25,12 @@ lb config \
  --compression gzip \
  --gzip-options '-9 --rsyncable' \
  --debconf-frontend noninteractive \
- --binary-filesystem xfs \
+ --binary-filesystem ext4 \
+ --debug \
  --bootstrap-qemu-arch armhf \
  --bootstrap-qemu-static /usr/bin/qemu-arm-static \
  --mirror-bootstrap 'http://archive.parrotsec.org/parrot' \
  --mirror-chroot 'http://archive.parrotsec.org/parrot' \
- --mirror-debian-installer 'http://archive.parrotsec.org/parrot' \
  --mirror-binary 'http://archive.parrotsec.org/parrot' \
  --iso-application 'Parrot' \
  --iso-publisher 'Parrot Project' \
