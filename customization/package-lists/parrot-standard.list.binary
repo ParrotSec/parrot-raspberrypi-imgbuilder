@@ -34,20 +34,9 @@ firmware-b43-installer
 ## parrot metapackages
 apt-parrot
 parrot-core
-#parrot-cloud
 parrot-interface
-#parrot-interface-full
 parrot-mini
-#parrot-tools-cloud
-#parrot-tools-full
-#parrot-stealth
-#parrot-drivers
-parrot-plymouth
-parrot-sounds
-parrot-interface-common
 parrot-mate
-parrot-menu
-parrot-update-manager
 
 ## other packages
 vinagre
