@@ -3,10 +3,7 @@ pipeline {
   stages {
     stage('setup') {
       steps {
-        ws(dir: '/opt/jenkins/parrot-raspberry') {
-          sh 'sudo apt-get install -y live-build qemu-user-static tar gzip xz-utils gdisk unzip wget kpartx lvm2 dosfstools coreutils parted xfsprogs'
-        }
-        
+        sh 'sudo apt-get install -y live-build qemu-user-static tar gzip xz-utils gdisk unzip wget kpartx lvm2 dosfstools coreutils parted xfsprogs'
       }
     }
     stage('configure') {
@@ -18,6 +15,11 @@ pipeline {
     stage('build') {
       steps {
         sh 'make -j8'
+      }
+    }
+    stage('artifacts') {
+      steps {
+        archiveArtifacts(artifacts: '*.tar.gz *.tar.bz2 *.contents *.files *.packages *.build-log.txt *.tar.xz *.md5sum* *.sha1sum*', onlyIfSuccessful: true)
       }
     }
   }
