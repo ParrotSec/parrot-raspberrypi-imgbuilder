@@ -98,7 +98,7 @@ mkfs.xfs ${rootp}
 mkdir -p ${rootfs}
 mkdir -p ${bootfs}
 
-mount -o compress=zlib,ssd ${rootp} ${rootfs}
+mount -t xfs ${rootp} ${rootfs}
 
 echo "Unpacking rootfs tarball"
 
