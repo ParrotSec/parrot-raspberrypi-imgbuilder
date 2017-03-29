@@ -17,10 +17,9 @@ pipeline {
         sh 'make -j8'
       }
     }
-    stage('Archive build results') {
+    stage('archive artifacts') {
       steps {
-        sh '''mkidr /opt/jenkins/parrot-raspberry
-mv parrotsec-* /opt/jenkins/parrot-raspberry'''
+        archiveArtifacts(artifacts: 'parrotsec-*', caseSensitive: true)
       }
     }
   }
