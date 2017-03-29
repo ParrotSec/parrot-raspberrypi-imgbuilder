@@ -11,19 +11,13 @@ pipeline {
     }
     stage('configure') {
       steps {
-        ws(dir: '/opt/jenkins/parrot-raspberry') {
-          sh '''make clean
+        sh '''make clean
 ./configure'''
-        }
-        
       }
     }
     stage('build') {
       steps {
-        ws(dir: '/opt/jenkins/parrot-raspberry') {
-          sh 'make -j8'
-        }
-        
+        sh 'make -j8'
       }
     }
   }

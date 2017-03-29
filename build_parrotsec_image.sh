@@ -15,13 +15,13 @@ if ! [ -b ${device} ]; then
   exit 1
 fi
 
-mkfs-xfs=`command -v mkfs.xfs`
+mkfsxfs=`command -v mkfs.xfs`
 
-if [ "${mkfs-xfs}" == "" ]; then
+if [ "${mkfsxfs}" == "" ]; then
   echo "You must install xfsprogs first."
   exit 1
 else
-  echo "Good! mkfs.xfs is installed under ${mkfs-xfs}"
+  echo "Good! mkfs.xfs is installed under ${mkfsxfs}"
 fi
 
 bootsize="64M"
