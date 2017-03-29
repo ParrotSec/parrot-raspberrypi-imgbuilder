@@ -45,7 +45,7 @@ if [ "${device}" == "" ]; then
   echo "no block device given, just creating an image"
   mkdir -p ${buildenv}
   image="${buildenv}/parrot-armhf-image.img"
-  dd if=/dev/zero of=${image} bs=1MB count=4096
+  dd if=/dev/zero of=${image} bs=1MB count=6144
   device=`losetup -f --show ${image}`
   echo "image ${image} created and mounted as ${device}"
 else
