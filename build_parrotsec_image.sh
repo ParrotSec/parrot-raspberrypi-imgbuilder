@@ -104,8 +104,6 @@ echo "Unpacking rootfs tarball"
 
 tar -C ${rootfs} --transform 's,binary,.,' --show-transformed -xzf ${absolute_path}/*.tar.gz
 
-btrfs filesystem defragment -v -r -czlib ${rootfs}
-
 sleep 1
 
 echo "Unpacked rootfs tarball"
