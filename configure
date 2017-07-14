@@ -34,7 +34,7 @@ lb config noauto \
  --mirror-binary 'http://archive.parrotsec.org/parrot' \
  --iso-application 'Parrot' \
  --iso-publisher 'Parrot Project' \
- --iso-volume 'ParrotSec 3.5 armhf' \
+ --iso-volume 'ParrotSec 3.7 armhf' \
  --linux-flavours none \
  --linux-packages none \
  --debian-installer false \

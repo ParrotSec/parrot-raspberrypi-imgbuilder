@@ -10,7 +10,7 @@
 # You need live-build package installed and superuser privileges.
 
 BUILD_NUMBER=1
-BASEIMG=parrotsec-standard-3.5-armhf-rpi
+BASEIMG=parrotsec-standard-3.7-armhf-rpi
 IMAGEPREFIX=$(BASEIMG)-$(BUILD_NUMBER)
 LOGFILE=$(IMAGEPREFIX).build-log.txt
 LOGFILEIMG=$(IMAGEPREFIX).build-log-img.txt
